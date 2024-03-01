@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Weather App V2</title>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="main-wrapper">
+            <h1 class="page-title">Weather App V2</h1>
+            <div class="inner-wrapper">
+                <div id="result-wrapper">
+                    <table>
+                        <tr>
+                            <td id="result-col1" class="result-columns">
+                                <p id="city-result-cont"><span id="city-result" th:text="${city}"></span></p>
+                                <p id="temp-result"><img class="weather-icon" th:src="@{'https://openweathermap.org/img/wn/' + ${icon} + '@2x.png'}" alt="Weather Icon"><span th:text="${temp}"></span></p>
+                            </td>
+                            <td id="result-col2" class="result-columns">
+                                <p id="humidity-result">Humidity: <span th:text="${humidity}"></span></p>
+                                <p id="weather-result"><span th:text="${description}"></span></p>
+                            </td>
+                        </tr>
+                    </table>
+                    <button class="btn" id="save-btn">Save to Favourites</button>
+                    <div id="alert-text" class="alert"></div>
+                </div>
+
+                <div id="error-wrapper"><p id="error-text" th:if="${error}" th:text="${error}"></p></div>
+
+                <form action="/" method="post">
+                    <label for="city">City</label>
+                    <br>
+                    <input type="text" id="city" name="city" required>
+                    <button class="btn" id="weather-submit-btn" type="submit">View Weather</button>
+                </form>
+
+                <div id="favourite-cities-wrapper">
+                    <div id="favourites-title">Favourites</div>
+                    <div id="favourite-cities">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
